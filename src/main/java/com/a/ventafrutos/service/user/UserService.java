@@ -5,4 +5,6 @@ import com.a.ventafrutos.dto.UserDTO;
 
 public interface UserService {
     UserDTO createUser(SignupDTO signupDTO);
+
+    boolean hasUserWithEmail(String correo);
 }

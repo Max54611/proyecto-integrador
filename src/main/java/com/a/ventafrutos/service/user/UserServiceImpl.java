@@ -18,9 +18,22 @@ public class UserServiceImpl implements UserService{
     public UserDTO createUser(SignupDTO signupDTO) {
         User user = new User();
         user.setCorreo(signupDTO.getCorreo());
+        user.setDireccion(signupDTO.getDireccion());
+        user.setTelefono(signupDTO.getTelefono());
         user.setUserRole(UserRole.USER);
         user.setContra(new BCryptPasswordEncoder().encode(signupDTO.getContra()));
-        userRepository.save(user);
-        return user.mapUserToUserDTO();
+        User createdUser = userRepository.save(user);
+        UserDTO userDTO = new UserDTO();
+        userDTO.setIdcliente(createdUser.getIdcliente());
+        userDTO.setCorreo(createdUser.getCorreo());
+        userDTO.setDireccion(createdUser.getDireccion());
+        userDTO.setTelefono(createdUser.getTelefono());
+        userDTO.setUserRole(createdUser.getUserRole());
+        return userDTO;
+    }
+
+    @Override
+    public boolean hasUserWithEmail(String correo) {
+        return userRepository.findFirstByCorreo(correo)!=null;
     }
 }

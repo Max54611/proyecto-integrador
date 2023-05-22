@@ -19,7 +19,5 @@ public class User {
     private String contra;
     private UserRole userRole;
 
-    public UserDTO mapUserToUserDTO(){
-        return new UserDTO(idcliente,correo,direccion,telefono,userRole);
-    }
+
 }

@@ -14,6 +14,4 @@ public class UserDTO {
     private String contra;
     private UserRole userRole;
 
-    public UserDTO(int idcliente, String correo, String direccion, String telefono, UserRole userRole) {
-    }
 }
